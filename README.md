@@ -13,7 +13,7 @@ To run a Next.js project that you've cloned from a GitHub repository, you'll typ
 2. **Navigate to the Project Directory:** Use the `cd` command to navigate into the directory of your cloned project:
 
     ```bash
-    cd volynter
+    cd VolunteerHub
     ```
 
 3. **Install Dependencies:** Next.js projects usually have dependencies listed in a `package.json` file. To install them, run:
