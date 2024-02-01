@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen justify-center items-center overflow-hidden">
       <h1 className="text-4xl font-bold cursor-pointer text-center text-white mb-12">
-        Welcome toVolunteer<span className="text-green-600">Hub!</span>
+        Welcome to Volunteer<span className="text-green-600">Hub!</span>
       </h1>
 
       <div className="p-10 bg-white rounded-md flex flex-col items-center pa">
