@@ -1,13 +1,13 @@
-import './globals.css'
+import "./globals.css";
 
 export const metadata = {
-  title: 'VolunteerHub',
-}
+  title: "VolunteerHub",
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className='bg-gray-400'>{children}</body>
+      <body className="bg-blue-400">{children}</body>
     </html>
-  )
+  );
 }
