@@ -29,6 +29,19 @@ const SignUp = () => {
           <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
           <div className="mb-4">
             <label
+              htmlFor="text"
+              className="block text-sm font-medium text-gray-600"
+            >
+              Username
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="mt-1 p-2 w-full border rounded-md"
+              placeholder="Enter your Username"
+            />
+            <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-600"
             >
