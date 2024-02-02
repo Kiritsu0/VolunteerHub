@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 const SignUp = () => {
   const searchParams = useSearchParams();
-  const route = useRouter();
+  const router = useRouter();
   const url = `/login?${searchParams}`;
 
   // Check if there are any search parameters in the URL
@@ -18,7 +18,7 @@ const SignUp = () => {
 
   // If there are no search parameters or invalid "type", redirect the user to /
   if (!hasSearchParams || !isValidType) {
-    route.push("/");
+    router.push("/");
   }
 
   return (
@@ -29,7 +29,7 @@ const SignUp = () => {
           <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
           <div className="mb-4">
             <label
-              htmlFor="text"
+              htmlFor="name"
               className="block text-sm font-medium text-gray-600"
             >
               Username
