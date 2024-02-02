@@ -14,12 +14,12 @@ const Home = () => {
           Choose your role below to get started:
         </p>
         <div className="flex gap-8 justify-center">
-          <Link href="">
+          <Link href="/signup?type=individual">
             <MdHail className="rounded-full text-4xl sm:text-5xl lg:text-6xl text-green-600 border-2 border-black p-1 mx-auto hover:bg-green-400" />
             <strong>Volunteer</strong>
           </Link>
 
-          <Link href="">
+          <Link href="/signup?type=organization">
             <VscOrganization className="rounded-full text-4xl sm:text-5xl lg:text-6xl text-green-600 border-2 border-black p-1 mx-auto hover:bg-green-400" />
             <strong>Organization</strong>
           </Link>
