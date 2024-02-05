@@ -34,8 +34,12 @@ const SignUpForm = () => {
 
     setError("");
 
-    if (!name || !email || !password) {
-      setError("All Fields Required");
+    if (!email.endsWith("@gmail.com")) {
+      setError("Email must ends with @gmail.com");
+      return;
+    }
+    else if (email.length - 10 < 4) {
+      setError("Email is too short");
       return;
     }
     setLoading(true);
@@ -104,6 +108,8 @@ const SignUpForm = () => {
               name="name"
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Enter your Username"
+              minLength="3"
+              required
             />
             <label
               htmlFor="email"
@@ -118,6 +124,7 @@ const SignUpForm = () => {
               name="email"
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Enter your email"
+              required
             />
           </div>
 
@@ -135,6 +142,8 @@ const SignUpForm = () => {
               name="password"
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Enter your password"
+              required
+              minlength="4"
             />
           </div>
           <p className="font-light mb-4">

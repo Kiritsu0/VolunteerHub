@@ -18,6 +18,15 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!email.endsWith("@gmail.com")) {
+      setError("Email must ends with @gmail.com");
+      return;
+    }
+    else if (email.length - 10 < 4) {
+      setError("Email is too short");
+      return;
+    }
+
     try {
       setLoading(true);
       const res = await signIn("credentials", {
@@ -58,6 +67,7 @@ const LoginForm = () => {
               name="email"
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Enter your email"
+              required
             />
           </div>
 
@@ -75,6 +85,8 @@ const LoginForm = () => {
               name="password"
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Enter your password"
+              required
+              minlength="4"
             />
           </div>
           <p className="font-light mb-4">

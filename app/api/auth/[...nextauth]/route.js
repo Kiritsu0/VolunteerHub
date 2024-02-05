@@ -4,7 +4,7 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 
-export const authOptins = {
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -43,6 +43,6 @@ export const authOptins = {
   },
 };
 
-const handler = NextAuth(authOptins);
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
