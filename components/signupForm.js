@@ -5,6 +5,7 @@ import { CgSpinner } from "react-icons/cg";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 const SignUpForm = () => {
   // for type value
@@ -34,14 +35,19 @@ const SignUpForm = () => {
 
     setError("");
 
+    if (!name || !email || !password) {
+      setError("All Fields Required");
+      return;
+    }
+
     if (!email.endsWith("@gmail.com")) {
       setError("Email must ends with @gmail.com");
       return;
-    }
-    else if (email.length - 10 < 4) {
+    } else if (email.length - 10 < 4) {
       setError("Email is too short");
       return;
     }
+
     setLoading(true);
     try {
       const resUserExist = await fetch("api/userExists", {
@@ -76,8 +82,24 @@ const SignUpForm = () => {
       if (res.ok) {
         const form = e.target;
         form.reset();
-        setSuccess("Account Created Successfully");
-        router.push("/login");
+        try {
+          setLoading(true);
+          const res = await signIn("credentials", {
+            email,
+            password,
+            redirect: false,
+          });
+
+          if (res.error) {
+            setError("Invalid Credentials");
+            setLoading(false);
+            return;
+          }
+
+          router.replace("home/volunteer");
+        } catch (error) {
+          console.log(error);
+        }
       } else {
         setLoading(false);
         console.log("registeration failed");
@@ -143,7 +165,7 @@ const SignUpForm = () => {
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Enter your password"
               required
-              minlength="4"
+              minLength="4"
             />
           </div>
           <p className="font-light mb-4">
