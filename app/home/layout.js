@@ -1,8 +1,9 @@
 "use client";
 import { FaUser } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
-import { IoIosSearch } from "react-icons/io";
-import { MdDarkMode, MdSettings } from "react-icons/md";
+import { IoIosSearch, IoIosAddCircle } from "react-icons/io";
+import { BiSolidBookContent } from "react-icons/bi";
+import { MdOutlineArrowDropDown, MdOutlineArrowDropUp, MdDarkMode, MdSettings } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
@@ -11,11 +12,15 @@ import { usePathname } from "next/navigation";
 
 const Layout = ({ children }) => {
   const [showDropdown, setDropdown] = useState(false);
-
+  const [showEvent, setEvent] = useState(false)
   const pathname = usePathname();
 
   const dropdown = () => {
     setDropdown(!showDropdown);
+  };
+
+  const eventDropdown = () => {
+    setEvent(!showEvent);
   };
 
   const signout = () => {
@@ -52,28 +57,45 @@ const Layout = ({ children }) => {
               <div className="absolute bottom-0 left-0 w-full h-1 bg-green-600 transition-transform transform translate-x-60 group-hover:translate-x-0"></div>
             </Link>
           ) : (
-            <div className="flex gap-5">
-              <Link
-                href=""
-                className="relative cursor-pointer group overflow-hidden"
-              >
-                <h2 className="font-medium mb-2 sm:text-1xl md:text-1xl lg:text-2xl">
-                  Created Events
-                </h2>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-green-600 transition-transform transform translate-x-60 group-hover:translate-x-0"></div>
-              </Link>
-              <Link
-                href=""
-                className="relative cursor-pointer group overflow-hidden"
-              >
-                <h2 className="font-medium mb-2 sm:text-1xl md:text-1xl lg:text-2xl">
-                  Create Event
-                </h2>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-green-600 transition-transform transform translate-x-60 group-hover:translate-x-0"></div>
-              </Link>
-            </div>
-            )
-          }
+              <div
+                onClick={eventDropdown}
+                className="group relative flex items-center gap-2 cursor-pointer">
+                {!showEvent && (
+                <MdOutlineArrowDropDown className="sm:text-3xl"/>
+                )}
+                {showEvent && (
+                  <MdOutlineArrowDropUp className="sm:text-3xl"/>
+                )}
+                <span className="sm:text-2xl">Events</span>
+                <span className="hidden group-hover:block absolute w-28 text-center m-auto top-14 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white p-2 rounded-md text-sm">
+                Events Menu
+                </span>
+
+                {showEvent && (
+                  <div
+                    className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white text-sm w-40 rounded-md">
+                    <Link
+                      href=""
+                      className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200  rounded-md"
+                    >
+                      <IoIosAddCircle className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl text-green-600"/>
+                      <h2 className="font-medium">
+                        Created Events
+                      </h2>
+                    </Link>
+                    <Link
+                      href=""
+                      className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 rounded-md"
+                    >
+                      <BiSolidBookContent className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl text-green-600"/>
+                      <h2 className="font-medium">
+                        Create Event
+                      </h2>
+                    </Link>
+                  </div>
+                )}
+              </div>
+          )}
 
           <div className="flex items-center gap-5 mr-8">
             <div
