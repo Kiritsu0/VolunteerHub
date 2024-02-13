@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
         </div>
 
         <div className="flex items-center gap-5">
-          {pathname === "/home/voluntee" ? (
+          {pathname.includes("/home/volunteer") ? (
             <Link
               href=""
               className="relative cursor-pointer group overflow-hidden "
@@ -57,7 +57,8 @@ const Layout = ({ children }) => {
               <div className="absolute bottom-0 left-0 w-full h-1 bg-green-600 transition-transform transform translate-x-60 group-hover:translate-x-0"></div>
             </Link>
           ) : (
-              <div
+
+            <div
                 onClick={eventDropdown}
                 className="group relative flex items-center gap-2 cursor-pointer">
                 {!showEvent && (
@@ -119,7 +120,7 @@ const Layout = ({ children }) => {
                   </Link>
                   <hr />
                   <Link
-                    href=""
+                    href={pathname === "/home/volunteer"? "/home/volunteer/settings" : "/home/organization/settings"}
                     className="flex gap-2 items-center p-2 hover:bg-slate-200"
                   >
                     <MdSettings className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl" />

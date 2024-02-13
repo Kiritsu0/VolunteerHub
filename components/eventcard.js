@@ -3,7 +3,7 @@ import React from "react";
 
 const Eventcard = ({ image, title, desc }) => {
   return (
-    <div className="flex h-full w-full justify-center  pt-4 px-2">
+    <div className="flex h-full w-full justify-center pt-4 px-2">
       <div className="flex h-68 w-[40rem] items-center rounded-md border-2 bg-gray-200 pr-2 shadow-xl">
         <div className="h-full w-2/5">
           <img
@@ -12,7 +12,7 @@ const Eventcard = ({ image, title, desc }) => {
             className="object-cover w-full h-full rounded-l-md"
           />
         </div>
-        <div className="mt-5 flex flex flex-col px-6 pb-5">
+        <div className="mt-5 flex flex-1 flex-col px-6 pb-5">
           <h1 className="line-clamp-2 text-xl font-semibold">{title}</h1>
           <article className="line-clamp-3 mb-3">{desc}</article>
           <div className="mt-2 flex justify-between">
