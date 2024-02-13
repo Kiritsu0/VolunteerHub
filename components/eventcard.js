@@ -9,12 +9,17 @@ const Eventcard = ({ image, title, desc }) => {
           <img
             src={image}
             alt="Description of the image"
-            className="object-cover w-full h-full rounded-l-md"
+            className="object-cover w-full h-full overflow-hidden rounded-sm"
+            style={{
+              borderTopLeftRadius: "10px",
+              borderBottomLeftRadius: "10px",
+            }}
           />
         </div>
+
         <div className="mt-5 flex flex-1 flex-col px-6 pb-5">
           <h1 className="line-clamp-2 text-xl font-semibold">{title}</h1>
-          <article className="line-clamp-3 mb-3">{desc}</article>
+          <h2 className="line-clamp-3 overflow-hidden pb-[3px]">{desc}</h2>
           <div className="mt-2 flex justify-between">
             <h3 className="font-semibold">Place: New York</h3>
             <h3 className="font-semibold">Date: 1/1/2024</h3>
