@@ -1,6 +1,3 @@
-"use client";
-import React from "react";
-
 const Eventcard = ({ image, title, desc }) => {
   return (
     <div className="flex h-full w-full justify-center pt-4 px-2">
