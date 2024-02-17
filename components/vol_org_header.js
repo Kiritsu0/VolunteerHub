@@ -108,7 +108,7 @@ const Header = () => {
                     Account
                 </span>
                 {showDropdown && (
-                    <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white text-sm h-48 w-40 rounded-md">
+                    <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white text-sm h-48 w-36 rounded-md">
                     <Link
                         onClick={signout}
                         href=""
