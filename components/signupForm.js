@@ -1,19 +1,19 @@
 "use client";
 
-import { FaUser } from "react-icons/fa";
-import { CgSpinner } from "react-icons/cg";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 
+// Icons
+import { FaUser } from "react-icons/fa";
+import { CgSpinner } from "react-icons/cg";
+
 const SignUpForm = () => {
-  // for type value
+  // Variables for type value
   const searchParams = useSearchParams();
   const router = useRouter();
-
   const hasSearchParams = Object.keys(searchParams).length > 0;
-
   const type = searchParams.get("type");
   const isValidType = type === "individual" || type === "organization";
 
@@ -21,7 +21,7 @@ const SignUpForm = () => {
     router.push("/");
   }
 
-  // for auth
+  // Variables for authentication
   const isOrganization = type === "organization" ? true : false;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,15 +30,11 @@ const SignUpForm = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
+  // Handling Signin
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setError("");
-
-    if (!name || !email || !password) {
-      setError("All Fields Required");
-      return;
-    }
 
     if (!email.endsWith("@gmail.com")) {
       setError("Email must ends with @gmail.com");

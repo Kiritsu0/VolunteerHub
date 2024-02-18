@@ -11,6 +11,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 
 const Settings = () => {
+// Variables
   const { data: session } = useSession();
   const [location, setLocation] = useState("Location")
   const [domainName, setDomainName] = useState("Add field name")
@@ -18,6 +19,9 @@ const Settings = () => {
   const [skills, setSkills] = useState([])
 
 
+// Functions
+
+  // Location
   const handleLocation = (event) => {
     event.preventDefault(); // Prevents the default form submission(default behavior sends a request to the server that reloads the page)
     const inputValue = event.target.elements["inputName"].value;
@@ -27,6 +31,7 @@ const Settings = () => {
     }
   };
 
+  // Domain Name
   const handleDomain = (event) => {
     event.preventDefault();
     const inputValue = event.target.elements["inputName"].value;
@@ -36,6 +41,7 @@ const Settings = () => {
     }
   };
 
+  // Description
   const handleDescription = (event) => {
     event.preventDefault();
     const inputValue = event.target.elements["inputName"].value;
@@ -45,17 +51,23 @@ const Settings = () => {
     }
   };
 
+  // Delete skills
   const handleSkillsDelete = (index) => {
-    setSkills((prevSkills) => prevSkills.filter((_, i) => i !== index));
+    setSkills((prevSkills) => {
+      const newSkills = [...prevSkills];
+      newSkills[index] = "";
+      return newSkills;
+    });
   }
 
-  const handleSkills = (event) => {
+  // Add skills
+  const handleAddSkills = (event) => {
     event.preventDefault();
     const inputValue = event.target.elements["inputName"].value;
     if (inputValue) {
       setSkills(previous => [...previous,
       (
-        <span key={previous.length} className="bg-white rounded-md inline-flex items-center px-2 py-1 gap-3 mr-4">
+        <span key={previous.length} className="bg-white rounded-md inline-flex items-center px-2 py-1 gap-3 mr-4 mt-5">
           {inputValue}
           <RxCross2 
             className="hover:bg-slate-200 cursor-pointer rounded-full"
@@ -145,7 +157,7 @@ const Settings = () => {
               <h2 className="text-2xl font-extralight">Skills</h2>
               <BiEdit className="text-2xl"/>
             </div>
-            <form onSubmit={handleSkills} className="flex items-center gap-1 ml-5">
+            <form onSubmit={handleAddSkills} className="flex items-center gap-1 ml-5">
               <input
                 name="inputName"
                 placeholder="Add Skills"
@@ -157,10 +169,27 @@ const Settings = () => {
                 <IoIosAddCircle className="text-4xl text-green-700 hover:opacity-80"/>
               </button>
             </form>
-            <div className="mt-4 ml-7">
+            <div className="ml-7">
               {skills}
             </div>
             <hr className="my-8"/>
+
+            <div className="flex justify-between mb-3 items-center">
+              <h2 className="text-2xl font-extralight">Joined Events</h2>
+                <BiEdit className="text-2xl"/>
+            </div>
+            <form onSubmit={""} className="flex items-center gap-1 ml-5">
+              <input
+                name="inputName"
+                placeholder="Add work"
+                className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
+              />
+              <button 
+                type="submit"
+                className="bg-green-500 rounded-full font-semibold">
+                <IoIosAddCircle className="text-4xl text-green-700 hover:opacity-80"/>
+              </button>
+            </form>
         </div>
       </div>
     </div>

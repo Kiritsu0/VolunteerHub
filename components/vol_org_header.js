@@ -11,18 +11,24 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Header = () => {
+// Variables
     const [showDropdown, setDropdown] = useState(false);
     const [showEvent, setEvent] = useState(false)
     const pathname = usePathname();
-  
+
+// Functions
+
+    // Dropdow
     const dropdown = () => {
       setDropdown(!showDropdown);
     };
   
+    // Event Dropdown
     const eventDropdown = () => {
       setEvent(!showEvent);
     };
   
+    // Signout
     const signout = () => {
       console.log("signout function called");
       signOut();

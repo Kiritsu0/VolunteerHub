@@ -9,19 +9,18 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 
 const LoginForm = () => {
+// Variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
 
+// Functions
+
+  // Handling Login
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!email || !password) {
-      setError("All Fields Required");
-      return;
-    }
 
     if (!email.endsWith("@gmail.com")) {
       setError("Email must ends with @gmail.com");
