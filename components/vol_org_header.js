@@ -125,7 +125,7 @@ const Header = () => {
                     </Link>
                     <hr />
                     <Link
-                        href={pathname === "/home/volunteer"? "/home/volunteer/settings" : "/home/organization/settings"}
+                        href={pathname === "/home/voluntee"? "/home/volunteer/settings" : "/home/organization/settings"}
                         className="flex gap-2 items-center p-2 hover:bg-slate-200"
                     >
                         <MdSettings className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl" />

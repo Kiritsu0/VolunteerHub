@@ -18,7 +18,6 @@ const Settings = () => {
   const [description, setDescription] = useState("Description")
   const [skills, setSkills] = useState([])
 
-
 // Functions
 
   // Location
@@ -88,14 +87,15 @@ const Settings = () => {
         </div>
 
         <div className="ml-7">
+          {/* Account */}
           <h1 className="text-3xl mb-3 font-medium">Account:</h1>
           <Asettings 
             name={session?.user?.name} 
             email={session?.user?.email}
           />
 
+          {/* Profile Settings */}
           <h1 className="text-3xl mb-3 font-medium">Profile Settings:</h1>
-
           <div className="ml-7">
             <div className="flex justify-between mb-3 items-center">
               <h2 className="text-2xl font-extralight">Location</h2>
@@ -116,6 +116,7 @@ const Settings = () => {
 
             <hr className="my-8"/>
 
+            {/* Domain name */}
             <div className="flex justify-between mb-3 items-center">
               <h2 className="text-2xl font-extralight">Domain Name</h2>
                 <BiEdit className="text-2xl"/>
@@ -135,6 +136,7 @@ const Settings = () => {
 
             <hr className="my-8"/>
 
+            {/* Description */}
             <div className="flex justify-between mb-3 items-center">
               <h2 className="text-2xl font-extralight">Description</h2>
               <BiEdit className="text-2xl"/>
@@ -153,6 +155,7 @@ const Settings = () => {
             </form>
             <hr className="my-8"/>
 
+            {/* Skills */}
             <div className="flex justify-between mb-3 items-center">
               <h2 className="text-2xl font-extralight">Skills</h2>
               <BiEdit className="text-2xl"/>
@@ -174,22 +177,29 @@ const Settings = () => {
             </div>
             <hr className="my-8"/>
 
+            {/* Not finished, Will continue later */}
             <div className="flex justify-between mb-3 items-center">
               <h2 className="text-2xl font-extralight">Joined Events</h2>
                 <BiEdit className="text-2xl"/>
             </div>
             <form onSubmit={""} className="flex items-center gap-1 ml-5">
-              <input
+              <select
+                type=""
                 name="inputName"
-                placeholder="Add work"
                 className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
-              />
+              >
+                <option>Work 1</option>
+                <option>Work 2</option>
+                <option>Work 3</option>
+                <option selected>Add work</option>
+              </select>
               <button 
                 type="submit"
                 className="bg-green-500 rounded-full font-semibold">
                 <IoIosAddCircle className="text-4xl text-green-700 hover:opacity-80"/>
               </button>
             </form>
+            <hr className="my-8"/>
         </div>
       </div>
     </div>
