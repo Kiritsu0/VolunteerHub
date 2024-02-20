@@ -80,7 +80,7 @@ const Settings = () => {
 
   return (
     <div className="flex w-full h-full justify-center bg-green-500 mt-5 pt-5">
-      <div className="w-1/2">
+      <div className="w-1/2 pb-10">
         <div className="flex items-center gap-2 mb-5">
           <MdSettings className="text-3xl"/>
             <h1 className="text-3xl font-semibold">Settings</h1>
@@ -97,80 +97,101 @@ const Settings = () => {
           {/* Profile Settings */}
           <h1 className="text-3xl mb-3 font-medium">Profile Settings:</h1>
           <div className="ml-7">
-            <div className="flex justify-between mb-3 items-center">
-              <h2 className="text-2xl font-extralight">Location</h2>
-                <BiEdit className="text-2xl"/>
-            </div>
-            <form onSubmit={handleLocation} className="flex items-center gap-1 ml-5">
-              <input
-                name="inputName"
-                placeholder={location}
-                className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
-              />
-              <button 
-                type="submit" 
-                className="bg-green-600 rounded-md py-1 px-2 font-semibold hover:bg-green-700">
-                Save
-              </button>
+            {/* Location */}
+            <form onSubmit={handleLocation} className="flex flex-col gap-1 ml-5">
+              <label className="cursor-pointer" htmlFor="location">
+                <div className="flex justify-between mb-3 items-center">
+                  <h2 className="text-2xl font-extralight">Location</h2>
+                  <BiEdit className="text-2xl"/>
+                </div>
+              </label>
+              <div className="flex gap-1">
+                <input
+                  id="location"
+                  aria-label="Location"
+                  placeholder={location}
+                  className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
+                />
+                <button 
+                  type="submit" 
+                  className="bg-green-600 rounded-md py-1 px-2 font-semibold hover:bg-green-700">
+                  Save
+                </button>
+              </div>
             </form>
 
             <hr className="my-8"/>
 
             {/* Domain name */}
-            <div className="flex justify-between mb-3 items-center">
-              <h2 className="text-2xl font-extralight">Domain Name</h2>
-                <BiEdit className="text-2xl"/>
-            </div>
-            <form onSubmit={handleDomain} className="flex items-center gap-1 ml-5">
-              <input
-                name="inputName"
-                placeholder={domainName}
-                className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
-              />
-              <button 
-                type="submit" 
-                className="bg-green-600 rounded-md py-1 px-2 font-semibold hover:bg-green-700">
-                Save
-              </button>
+            <form onSubmit={handleDomain} className="flex flex-col gap-1 ml-5">
+              <label className="cursor-pointer" htmlFor="domain_name">
+                <div className="flex justify-between mb-3 items-center">
+                  <h2 className="text-2xl font-extralight">Domain Name</h2>
+                  <BiEdit className="text-2xl"/>
+                </div>
+              </label>
+              <div className="flex gap-1">
+                <input
+                  id="domain_name"
+                  aria-label="Domain Name"
+                  placeholder={domainName}
+                  className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
+                />
+                <button 
+                  type="submit" 
+                  className="bg-green-600 rounded-md py-1 px-2 font-semibold hover:bg-green-700">
+                  Save
+                </button>
+              </div>
             </form>
 
             <hr className="my-8"/>
 
             {/* Description */}
-            <div className="flex justify-between mb-3 items-center">
-              <h2 className="text-2xl font-extralight">Description</h2>
-              <BiEdit className="text-2xl"/>
-            </div>
-            <form onSubmit={handleDescription} className="flex items-center gap-1 ml-5">
-              <textarea
-                name="inputName"
-                placeholder={description}
-                className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
-              />
-              <button 
-                type="submit" 
-                className="bg-green-600 rounded-md py-1 px-2 font-semibold hover:bg-green-700">
-                Save
-              </button>
+            <form onSubmit={handleDescription} className="flex flex-col gap-1 ml-5">
+              <label className="cursor-pointer" htmlFor="description">
+                <div className="flex justify-between mb-3 items-center">
+                  <h2 className="text-2xl font-extralight">Description</h2>
+                  <BiEdit className="text-2xl"/>
+                </div>
+              </label>
+              <div className="flex gap-1 items-center">
+                <textarea
+                  id="description"
+                  aria-label="Description"
+                  placeholder={description}
+                  className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
+                />
+                <button 
+                  type="submit" 
+                  className="bg-green-600 rounded-md py-1 px-2 h-7 font-semibold hover:bg-green-700">
+                  Save
+                </button>
+              </div>
             </form>
             <hr className="my-8"/>
 
             {/* Skills */}
-            <div className="flex justify-between mb-3 items-center">
-              <h2 className="text-2xl font-extralight">Skills</h2>
-              <BiEdit className="text-2xl"/>
-            </div>
-            <form onSubmit={handleAddSkills} className="flex items-center gap-1 ml-5">
-              <input
-                name="inputName"
-                placeholder="Add Skills"
-                className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
-              />
-              <button 
-                type="submit"
-                className="bg-green-500 rounded-full font-semibold">
-                <IoIosAddCircle className="text-4xl text-green-700 hover:opacity-80"/>
-              </button>
+            <form onSubmit={handleAddSkills} className="flex flex-col gap-1 ml-5">
+              <label className="cursor-pointer" htmlFor="skills">
+                <div className="flex justify-between mb-3 items-center">
+                  <h2 className="text-2xl font-extralight">Skills</h2>
+                  <BiEdit className="text-2xl"/>
+                </div>
+              </label>
+              <div className="flex gap-1">
+                <input
+                  id="skills"
+                  aria-label="Skills"
+                  placeholder="Add Skills"
+                  className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
+                />
+                <button 
+                  type="submit"
+                  className="bg-green-500 rounded-full font-semibold">
+                  <IoIosAddCircle className="text-4xl text-green-700 hover:opacity-80"/>
+                </button>
+              </div>
             </form>
             <div className="ml-7">
               {skills}
@@ -178,28 +199,32 @@ const Settings = () => {
             <hr className="my-8"/>
 
             {/* Not finished, Will continue later */}
-            <div className="flex justify-between mb-3 items-center">
-              <h2 className="text-2xl font-extralight">Joined Events</h2>
-                <BiEdit className="text-2xl"/>
-            </div>
-            <form onSubmit={""} className="flex items-center gap-1 ml-5">
-              <select
-                type=""
-                name="inputName"
-                className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
-              >
-                <option>Work 1</option>
-                <option>Work 2</option>
-                <option>Work 3</option>
-                <option selected>Add work</option>
-              </select>
-              <button 
-                type="submit"
-                className="bg-green-500 rounded-full font-semibold">
-                <IoIosAddCircle className="text-4xl text-green-700 hover:opacity-80"/>
-              </button>
+            <form onSubmit={""} className="flex flex-col gap-1 ml-5">
+              <label className="cursor-pointer" htmlFor="join_event">
+                <div className="flex justify-between mb-3 items-center">
+                  <h2 className="text-2xl font-extralight">Joined Events</h2>
+                  <BiEdit className="text-2xl"/>
+                </div>
+              </label>
+              <div className="flex gap-1">
+                <select
+                  id="join_event"
+                  aria-label="Joined Events"
+                  type=""
+                  className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
+                >
+                  <option>Work 1</option>
+                  <option>Work 2</option>
+                  <option>Work 3</option>
+                  <option selected>Add work</option>
+                </select>
+                <button 
+                  type="submit"
+                  className="bg-green-500 rounded-full font-semibold">
+                  <IoIosAddCircle className="text-4xl text-green-700 hover:opacity-80"/>
+                </button>
+              </div>
             </form>
-            <hr className="my-8"/>
         </div>
       </div>
     </div>
