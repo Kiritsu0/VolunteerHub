@@ -14,6 +14,7 @@ const Asettings = ({ name, email }) => {
         <div className="flex gap-1">
           <input 
             id="name"
+            name="Input"
             aria-label="Name"
             placeholder={name} 
             className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24"
@@ -38,6 +39,7 @@ const Asettings = ({ name, email }) => {
         <div className="flex gap-1">
           <input 
             id="email"
+            name="Input"
             aria-label="Email"
             placeholder={email} 
             className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24"
@@ -62,6 +64,7 @@ const Asettings = ({ name, email }) => {
         <div className="flex gap-1">
           <input 
             id="password"
+            name="Input"
             aria-label="Password"
             placeholder=".........." 
             className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24"

@@ -1,14 +1,17 @@
 "use client";
+
+import { signOut, useSession } from "next-auth/react";
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+// Icons
 import { FaUser } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
 import { IoIosSearch, IoIosAddCircle } from "react-icons/io";
 import { BiSolidBookContent } from "react-icons/bi";
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp, MdDarkMode, MdSettings } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
-import { signOut, useSession } from "next-auth/react";
-import { useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const Header = () => {
 // Variables
@@ -38,9 +41,11 @@ const Header = () => {
 
     return (
         <header className="flex justify-between items-center w-screen min-h-14">
-            <h1 className="font-medium ml-4 text-2xl hidden sm:block sm:text-2xl md:text-3xl lg:text-4xl">
-            Volunteer<span className="font-bold text-green-600">Hub</span>
-            </h1>
+            <Link href="/">
+                <h1 className="font-medium ml-4 text-2xl hidden sm:block sm:text-2xl md:text-3xl lg:text-4xl">
+                Volunteer<span className="font-bold text-green-600">Hub</span>
+                </h1>
+            </Link>
 
             <div className="flex bg-slate-200 gap-3 p-2 rounded-full w-1/3 ml-4 sm:ml-0">
             <IoIosSearch className="text-2xl" />

@@ -21,25 +21,45 @@ const Settings = () => {
 
 // Functions
 
-  // Location
-  const handleLocation = (event) => {
+  // Handle Submition
+  const handleSubmition = (event, inputValue, inputsource) => {
     event.preventDefault();
-    const inputValue = event.target.elements["inputName"].value;
     if (inputValue) {
-      setLocation(inputValue);
-      event.target.reset()
-    }
-  };
+      if (inputsource === "location") {
+        setLocation(inputValue);
+        event.target.reset()
+      }
 
-  // About Us
-  const handleAboutus = (event) => {
-    event.preventDefault();
-    const inputValue = event.target.elements["inputName"].value;
-    if (inputValue) {
-      setAboutus(inputValue);
-      event.target.reset()
+      else if (inputsource === "aboutus") {
+        setAboutus(inputValue);
+        event.target.reset()
+      }
+
+      else if (inputsource === "services") {
+        setServices(previous => [...previous,
+          (
+            <span key={previous.length} className="bg-white rounded-md inline-flex items-center px-2 py-1 gap-3 mr-4 mt-5">
+              {inputValue}
+              <RxCross2 
+                className="hover:bg-slate-200 cursor-pointer rounded-full"
+                onClick={() => handleServiceDelete(previous.length)}
+              />
+            </span>
+          )]);
+        event.target.reset()
+      }
+
+      else if (inputsource === "phonenumber") {
+        setPhoneNumber(inputValue);
+        event.target.reset()
+      }
+
+      else if (inputsource === "emailaddress") {
+        setEmailAddress(inputValue);
+        event.target.reset()
+      }
     }
-  };
+  }
 
     // Delete Service
     const handleServiceDelete = (index) => {
@@ -49,46 +69,8 @@ const Settings = () => {
         return newSkills;
       });
     }
-  
-    // Add service
-    const handleAddService = (event) => {
-      event.preventDefault();
-      const inputValue = event.target.elements["inputName"].value;
-      if (inputValue) {
-        setServices(previous => [...previous,
-        (
-          <span key={previous.length} className="bg-white rounded-md inline-flex items-center px-2 py-1 gap-3 mr-4 mt-5">
-            {inputValue}
-            <RxCross2 
-              className="hover:bg-slate-200 cursor-pointer rounded-full"
-              onClick={() => handleServiceDelete(previous.length)}
-            />
-          </span>
-        )]);
-        event.target.reset()
-      }
-    };
 
-    // Phone Number
-    const handlePhoneNumber = (event) => {
-      event.preventDefault();
-      const inputValue = event.target.elements["inputName"].value;
-      if (inputValue) {
-        setPhoneNumber(inputValue);
-        event.target.reset()
-      }
-    };
-
-    // Email Address
-    const handleEmailAddress = (event) => {
-      event.preventDefault();
-      const inputValue = event.target.elements["inputName"].value;
-      if (inputValue) {
-        setEmailAddress(inputValue);
-        event.target.reset()
-      }
-    };
-  return (
+    return (
     <div className="flex w-full h-full justify-center bg-green-500 mt-5 pt-5">
       <div className="w-1/2 pb-10">
         <div className="flex items-center gap-2 mb-5">
@@ -102,13 +84,13 @@ const Settings = () => {
           <Asettings 
             name={session?.user?.name}
             email={session?.user?.email}
-          />
+          />/
 
           {/* Profile Settings */}
           <h1 className="text-3xl mb-3 font-medium">Profile Settings:</h1>
           <div className="ml-7">
             {/* Location */}
-            <form onSubmit={handleLocation} className="flex flex-col gap-1 ml-5">
+            <form onSubmit={(e) => handleSubmition(e, e.target.elements["Input"].value, "location")} className="flex flex-col gap-1 ml-5">
               <label className="cursor-pointer" htmlFor="location">
                 <div className="flex justify-between mb-3 items-center">
                   <h2 className="text-2xl font-extralight">Location</h2>
@@ -118,6 +100,7 @@ const Settings = () => {
               <div className="flex gap-1">
                 <input
                   id="location"
+                  name="Input"
                   aria-label="Location"
                   placeholder={location}
                   className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
@@ -132,7 +115,7 @@ const Settings = () => {
             <hr className="my-8"/>
 
             {/* About Us */}
-            <form onSubmit={handleAboutus} className="flex flex-col gap-1 ml-5">
+            <form onSubmit={(e) => handleSubmition(e, e.target.elements["Input"].value, "aboutus")} className="flex flex-col gap-1 ml-5">
               <label className="cursor-pointer" htmlFor="about_us">
                 <div className="flex justify-between mb-3 items-center">
                   <h2 className="text-2xl font-extralight">About Us</h2>
@@ -142,6 +125,7 @@ const Settings = () => {
               <div className="flex gap-1 items-center">
                 <textarea
                   id="about_us"
+                  name="Input"
                   aria-label="About Us"
                   placeholder={aboutus}
                   className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
@@ -156,7 +140,7 @@ const Settings = () => {
             <hr className="my-8"/>
 
             {/* Services */}
-            <form onSubmit={handleAddService} className="flex flex-col gap-1 ml-5">
+            <form onSubmit={(e) => handleSubmition(e, e.target.elements["Input"].value, "services")} className="flex flex-col gap-1 ml-5">
               <label className="cursor-pointer" htmlFor="add_service">
                 <div className="flex justify-between mb-3 items-center">
                   <h2 className="text-2xl font-extralight">Services</h2>
@@ -166,6 +150,7 @@ const Settings = () => {
               <div className="flex gap-1">
                 <input
                   id="add_service"
+                  name="Input"
                   placeholder="Add Service"
                   aria-label="Add Service"
                   className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
@@ -194,9 +179,9 @@ const Settings = () => {
               <div className="flex gap-1">
                 <select
                   id="add_event"
+                  name="Input"
                   type=""
                   aria-label="Add Event"
-                  name="inputName"
                   className="rounded-md px-3 py-1 placeholder-slate-400 outline-none w-1/4 min-w-24" 
                 >
                   <option>Event 1</option>
@@ -215,8 +200,9 @@ const Settings = () => {
 
             {/* Contacts Info */}
             <h1 className="text-3xl mb-3 font-medium">Contacts Info:</h1>
+            {/* Phone Number */}
             <div className="ml-7">
-              <form onSubmit={handlePhoneNumber} className="flex flex-col gap-1 ml-5">
+              <form onSubmit={(e) => handleSubmition(e, e.target.elements["Input"].value, "phonenumber")} className="flex flex-col gap-1 ml-5">
                 <label className="cursor-pointer" htmlFor="phone_number">
                   <div className="flex justify-between mb-3 items-center">
                     <h2 className="text-2xl font-extralight">Phone Number</h2>
@@ -226,6 +212,7 @@ const Settings = () => {
                 <div className="flex gap-1">
                   <input
                     id="phone_number"
+                    name="Input"
                     type="tel"
                     placeholder={phone_number}
                     aria-label="Phone Number"
@@ -241,7 +228,7 @@ const Settings = () => {
               <hr className="my-8"/>
 
               {/* Email Address*/}
-              <form onSubmit={handleEmailAddress} className="flex flex-col gap-1 ml-5">
+              <form onSubmit={(e) => handleSubmition(e, e.target.elements["Input"].value, "emailaddress")} className="flex flex-col gap-1 ml-5">
                 <label className="cursor-pointer" htmlFor="email_address">
                   <div className="flex justify-between mb-3 items-center">
                     <h2 className="text-2xl font-extralight">Email Address</h2>
@@ -251,6 +238,7 @@ const Settings = () => {
                 <div className="flex gap-1">
                   <input
                     id="email_address"
+                    name="Input"
                     type="tel"
                     placeholder={email_address}
                     aria-label="Email Address"
