@@ -138,7 +138,7 @@ const Header = () => {
                     </Link>
                     <hr />
                     <Link
-                        href=""
+                        href={pathname === "/home/volunteer"? "/home/volunteer/profile" : "/home/organization/profile"}
                         className="flex gap-2 items-center p-2 hover:bg-slate-200"
                     >
                         <CgProfile className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl" />

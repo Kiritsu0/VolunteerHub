@@ -1,12 +1,12 @@
 const Eventcard = ({ image, title, desc }) => {
   return (
     <div className="flex h-full w-full justify-center pt-4 px-2">
-      <div className="flex md:flex-row flex-col h-68 w-[40rem] items-center rounded-md border-2 bg-gray-200 md:pr-2 sm:pr-1 shadow-xl">
+      <div className="flex md:flex-row flex-col h-68 w-[40rem] items-center rounded-md border-2 bg-gray-200 shadow-xl">
         <div className="md:h-full md:w-2/5 w-1/1">
           <img
             src={image}
             alt="Description of the image"
-            className="object-cover w-full h-full md:rounded-l-md rounded-md"
+            className="object-cover w-full obje h-full md:rounded-l-md rounded-md"
           />
         </div>
 

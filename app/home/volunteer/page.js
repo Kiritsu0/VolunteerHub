@@ -2,7 +2,7 @@ import Eventcard from "@/components/eventcard";
 
 const Volunteer = () => {
   return (
-    <div className="bg-green-500 mt-3 py-3">
+    <div className="bg-green-500 mt-3 pb-5">
       <Eventcard
         image="https://images.unsplash.com/photo-1590930180621-fc7027a21559?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         title="Need Some Volunteer To Help Us Plant Some Trees"
